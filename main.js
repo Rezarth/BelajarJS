@@ -64,12 +64,39 @@
 
 
     //document Object Model (DOM)
-let p = document.querySelector("p")
-let button = document.querySelector("button")
-let input = document.querySelector("input")
+//let p = document.querySelector("p")
+//let button = document.querySelector("button")
+//let input = document.querySelector("input")
 
-button.addEventListener("click", function(){
-    let isi = input.value
-    console.log(isi)
-    p.innerHTML = isi
-})
+//button.addEventListener("click", function(){
+    //let isi = input.value
+    //console.log(isi)
+    //p.innerHTML = isi
+//})
+
+
+        //Tugas
+function addTask() {
+const newTaskText = document.getElementById("new-task").value;
+    if (newTaskText.trim() === "") {
+        alert("Masukkan teks tugas!");
+        return;
+    }
+
+    const taskList = document.getElementById("todo-list");
+    const newTask = document.createElement("li");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.addEventListener("change", function () {
+        if (checkbox.checked) {
+            newTask.classList.add("completed");
+        } else {
+            newTask.classList.remove("completed");
+        }
+    });
+
+    newTask.appendChild(checkbox);
+    newTask.appendChild(document.createTextNode(newTaskText));
+    taskList.appendChild(newTask);
+    document.getElementById("new-task").value = "";
+}  
